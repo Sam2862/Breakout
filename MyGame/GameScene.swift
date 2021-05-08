@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createPhysics()
         createBall()
         createPaddle()
+        createBarriers()
     }
     
     func createPhysics() {
@@ -42,7 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.fillColor = .white
         
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.velocity = CGVector(dx: 0, dy: 50)
+        ball.physicsBody?.velocity = CGVector(dx: -50, dy: 50)
         
         ball.physicsBody?.collisionBitMask = gameGroup
         ball.physicsBody?.contactTestBitMask = gameGroup
@@ -73,6 +74,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.paddle = paddle
         addChild(paddle)
+    }
+    
+    func createBarriers() {
+        guard let view = self.view else { return }
+        
+        let size = CGSize(width: 1, height: view.frame.size.height)
+        let leftBarrier = SKShapeNode(rectOf: size)
+        leftBarrier.position = CGPoint(x: 0, y: view.frame.midY)
+        leftBarrier.strokeColor = .blue
+        
+        makeSolidRectange(node: leftBarrier, size: size)
+        addChild(leftBarrier)
+        
+        let rightBarrier = SKShapeNode(rectOf: size)
+        rightBarrier.position = CGPoint(x: view.frame.size.width, y: view.frame.midY)
+        rightBarrier.strokeColor = .blue
+        
+        makeSolidRectange(node: rightBarrier, size: size)
+        addChild(rightBarrier)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
