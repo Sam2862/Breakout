@@ -93,6 +93,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         makeSolidRectange(node: rightBarrier, size: size)
         addChild(rightBarrier)
+        
+        let topSize = CGSize(width: view.frame.size.width, height: 1)
+        let topBarrier = SKShapeNode(rectOf: topSize)
+        topBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.maxY)
+        topBarrier.strokeColor = .blue
+        
+        makeSolidRectange(node: topBarrier, size: topSize)
+        addChild(topBarrier)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
