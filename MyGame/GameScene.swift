@@ -83,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.physicsBody?.linearDamping = 0
         ball.physicsBody?.allowsRotation = false
         ball.physicsBody?.angularDamping = 0
-        ball.physicsBody?.restitution = 0.5
+        ball.physicsBody?.restitution = 1
         
         self.ball = ball
         addChild(ball)
@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.physicsBody?.collisionBitMask = 1
         node.physicsBody?.contactTestBitMask = 1
         node.physicsBody?.friction = 0
-        node.physicsBody?.restitution = 0.5
+        node.physicsBody?.restitution = 1
     }
     
     func createPaddle() {
@@ -109,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.physicsBody = SKPhysicsBody(rectangleOf: size)
         paddle.physicsBody?.isDynamic = false
         paddle.physicsBody?.friction = 0
-        paddle.physicsBody?.restitution = 0.5
+        paddle.physicsBody?.restitution = 1
         paddle.physicsBody?.allowsRotation = false
         
         self.paddle = paddle
