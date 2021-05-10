@@ -19,7 +19,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var ball: SKShapeNode?
     var paddle: SKShapeNode?
+    var bottomBarrier: SKShapeNode?
     var paddleDirection = PaddleDirection.still
+    var gameOverLabel: SKLabelNode?
     
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
@@ -30,10 +32,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func startGame() {
+        self.scene?.removeAllChildren()
         createPhysics()
         createBall()
         createPaddle()
         createBarriers()
+        gameOverLabel = nil
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -139,16 +143,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let bottomBarrier = SKShapeNode(rectOf: horizontalSize)
         bottomBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.minY)
-        bottomBarrier.strokeColor = .white
+        bottomBarrier.strokeColor = .blue
         
         makeSolidRectange(node: bottomBarrier, size: horizontalSize)
+        
+        self.bottomBarrier = bottomBarrier
         addChild(bottomBarrier)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let view = self.view, let position = touches.first?.location(in: view) else { return }
-        
-        if position.x<view.frame.midX {
+        if gameOverLabel != nil {
+            startGame()
+        }
+        else if position.x<view.frame.midX {
             self.paddleDirection = .left
         }
         else {
@@ -160,5 +168,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.paddleDirection = .still
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let ball = self.ball else { return }
+        guard let bottomBarrier = self.bottomBarrier else { return }
+
+        if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
+            (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
+            gameOver()
+        }
+    }
+    
+    func gameOver() {
+        guard let view = self.view else { return }
+
+        self.scene?.removeAllChildren()
+        let gameOverLabel = SKLabelNode(text: "Game Over")
+        gameOverLabel.fontSize = 20
+        gameOverLabel.fontColor = .white
+        gameOverLabel.position = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
+
+        self.gameOverLabel = gameOverLabel
+        addChild(gameOverLabel)
     }
 }
