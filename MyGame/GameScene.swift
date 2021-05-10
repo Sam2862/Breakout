@@ -9,10 +9,17 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
+enum PaddleDirection {
+    case still
+    case left
+    case right
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var ball: SKShapeNode?
     var paddle: SKShapeNode?
+    var paddleDirection = PaddleDirection.still
     
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
@@ -29,6 +36,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createBarriers()
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        guard let paddle = self.paddle else { return }
+        guard let view = self.view else { return }
+
+        switch self.paddleDirection {
+        case .still:
+            break
+        case .left:
+            if paddle.position.x > paddle.frame.size.width/2 {
+                paddle.position = CGPoint(x: paddle.position.x-3, y: paddle.position.y)
+            }
+            
+        case .right:
+            if paddle.position.x < view.frame.maxX-paddle.frame.size.width/2 {
+                paddle.position = CGPoint(x: paddle.position.x+3, y: paddle.position.y)
+            }
+        }
+    }
+    
     func createPhysics() {
         self.physicsWorld.gravity = gravityVector
         self.physicsWorld.contactDelegate = self
@@ -43,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.fillColor = .white
         
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.velocity = CGVector(dx: -50, dy: 50)
+        ball.physicsBody?.velocity = CGVector(dx: -100, dy: 100)
         
         ball.physicsBody?.collisionBitMask = gameGroup
         ball.physicsBody?.contactTestBitMask = gameGroup
@@ -73,12 +99,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let size = CGSize(width: 100, height: 5)
         let paddle = SKShapeNode(rectOf: size)
-        paddle.position = CGPoint(x: view.frame.midX, y: size.height/2)
+        paddle.position = CGPoint(x: view.frame.midX, y: size.height)
         paddle.fillColor = .darkGray
         paddle.physicsBody = SKPhysicsBody(rectangleOf: size)
         paddle.physicsBody?.isDynamic = false
         paddle.physicsBody?.friction = 0
         paddle.physicsBody?.restitution = 0.5
+        paddle.physicsBody?.allowsRotation = false
         
         self.paddle = paddle
         addChild(paddle)
@@ -102,29 +129,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makeSolidRectange(node: rightBarrier, size: size)
         addChild(rightBarrier)
         
-        let topSize = CGSize(width: view.frame.size.width, height: 1)
-        let topBarrier = SKShapeNode(rectOf: topSize)
+        let horizontalSize = CGSize(width: view.frame.size.width, height: 1)
+        let topBarrier = SKShapeNode(rectOf: horizontalSize)
         topBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.maxY)
         topBarrier.strokeColor = .blue
         
-        makeSolidRectange(node: topBarrier, size: topSize)
+        makeSolidRectange(node: topBarrier, size: horizontalSize)
         addChild(topBarrier)
+        
+        let bottomBarrier = SKShapeNode(rectOf: horizontalSize)
+        bottomBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.minY)
+        bottomBarrier.strokeColor = .white
+        
+        makeSolidRectange(node: bottomBarrier, size: horizontalSize)
+        addChild(bottomBarrier)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let view = self.view, let position = touches.first?.location(in: view) else { return }
         
         if position.x<view.frame.midX {
-            self.paddle?.physicsBody?.velocity = CGVector(dx: -10, dy: 0)
+            self.paddleDirection = .left
         }
         else {
-            self.paddle?.physicsBody?.velocity = CGVector(dx: 10, dy: 0)
+            self.paddleDirection = .right
         }
         
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.paddle?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self.paddleDirection = .still
     }
 }
