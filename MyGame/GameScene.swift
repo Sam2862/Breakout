@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ball: SKShapeNode?
     var paddle: SKShapeNode?
     var bottomBarrier: SKShapeNode?
+    var bricks = [SKShapeNode]()
     var paddleDirection = PaddleDirection.still
     var gameOverLabel: SKLabelNode?
     
@@ -154,6 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func createBricks() {
         guard let view = self.view else { return }
+        bricks = [SKShapeNode]()
         
         let brickWidth: CGFloat = 40
         let brickHeight: CGFloat = 20
@@ -167,6 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 makeSolidRectange(node: brick, size: brickSize)
                 addChild(brick)
+                bricks.append(brick)
             }
         }
     }
@@ -190,6 +193,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.paddleDirection = .still
     }
     
+    func checkBrickContact(_ contact: SKPhysicsContact) {
+        guard let ball = self.ball else { return }
+        
+        for brick in bricks {
+            if (contact.bodyA == ball.physicsBody && contact.bodyB == brick.physicsBody) ||
+                (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
+                brick.removeFromParent()
+                bricks.removeAll{$0 == brick}
+                break
+            }
+        }
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         guard let ball = self.ball else { return }
         guard let bottomBarrier = self.bottomBarrier else { return }
@@ -197,6 +213,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
             (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
             gameOver()
+        }
+        else {
+            checkBrickContact(contact)
         }
     }
     
