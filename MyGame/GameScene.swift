@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createBall()
         createPaddle()
         createBarriers()
+        createBricks()
         gameOverLabel = nil
     }
     
@@ -149,6 +150,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.bottomBarrier = bottomBarrier
         addChild(bottomBarrier)
+    }
+    
+    func createBricks() {
+        guard let view = self.view else { return }
+        
+        let brickWidth: CGFloat = 40
+        let brickHeight: CGFloat = 20
+        let brickSize = CGSize(width: brickWidth, height: brickHeight)
+        let numBricks: Int = Int(view.frame.size.width/brickWidth)
+        for brickY in 0..<4 {
+            for brickX in 0..<numBricks {
+                let brick = SKShapeNode(rectOf: brickSize)
+                brick.position = CGPoint(x: view.frame.minX+brickWidth/2+(brickWidth*CGFloat(brickX)), y: (view.frame.maxY-brickHeight)-(CGFloat(brickY)*brickHeight))
+                brick.fillColor = .gray
+                
+                makeSolidRectange(node: brick, size: brickSize)
+                addChild(brick)
+            }
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
