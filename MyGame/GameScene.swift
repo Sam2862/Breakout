@@ -215,7 +215,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver()
         }
         else {
+            checkPaddleContact(contact)
             checkBrickContact(contact)
+        }
+    }
+    
+    func checkPaddleContact(_ contact: SKPhysicsContact) {
+        guard let ball = self.ball else { return }
+        guard let paddle = self.paddle else { return }
+        
+        if (contact.bodyA == ball.physicsBody && contact.bodyB == paddle.physicsBody) ||
+            (contact.bodyA == paddle.physicsBody && contact.bodyB == ball.physicsBody){
+            // Checks where on the paddle the ball touched and adjusts the ball's trajectory based on that.
+            // Possible solution: (ball.position.x-paddle.position.x)/50
+            if (ball.position.x<paddle.position.x) {
+                ball.physicsBody?.applyImpulse(CGVector(dx: -1, dy: 0))
+            }
+            else {
+                ball.physicsBody?.applyImpulse(CGVector(dx: 1, dy: 0))
+            }
         }
     }
     
