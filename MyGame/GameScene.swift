@@ -212,11 +212,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
             (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
-            gameOver()
+            endGame(text: "Game Over")
         }
         else {
             checkPaddleContact(contact)
             checkBrickContact(contact)
+            checkForWin()
+        }
+    }
+    
+    func checkForWin() {
+        if bricks.isEmpty {
+            endGame(text: "Congratulations! You Win!")
         }
     }
     
@@ -237,11 +244,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func gameOver() {
+    func endGame(text: String) {
         guard let view = self.view else { return }
 
         self.scene?.removeAllChildren()
-        let gameOverLabel = SKLabelNode(text: "Game Over")
+        let gameOverLabel = SKLabelNode(text: text)
         gameOverLabel.fontSize = 20
         gameOverLabel.fontColor = .white
         gameOverLabel.position = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
