@@ -74,8 +74,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.position = CGPoint(x: view.frame.midX, y: 20)
         ball.fillColor = .white
         
+        let speed: CGFloat = 140
+        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
+        let xVelocity: CGFloat
+        if GKARC4RandomSource.sharedRandom().nextBool() {
+            xVelocity = sqrt(speed*speed+yVelocity*yVelocity) * -1
+        }
+        else {
+            xVelocity = sqrt(speed*speed+yVelocity*yVelocity)
+        }
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.velocity = CGVector(dx: -100, dy: 100)
+        ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
         
         ball.physicsBody?.collisionBitMask = gameGroup
         ball.physicsBody?.contactTestBitMask = gameGroup
