@@ -16,6 +16,7 @@
 		B641C0FA264448B0001CEC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F8264448B0001CEC2E /* LaunchScreen.storyboard */; };
 		B641C105264448B1001CEC2E /* MyGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C104264448B1001CEC2E /* MyGameTests.swift */; };
 		B641C110264448B1001CEC2E /* MyGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C10F264448B1001CEC2E /* MyGameUITests.swift */; };
+		B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31017264DA66F00C3AEEA /* VectorMath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B641C10B264448B1001CEC2E /* MyGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B641C10F264448B1001CEC2E /* MyGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameUITests.swift; sourceTree = "<group>"; };
 		B641C111264448B1001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D31017264DA66F00C3AEEA /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,7 @@
 				B641C0F6264448B0001CEC2E /* Assets.xcassets */,
 				B641C0F8264448B0001CEC2E /* LaunchScreen.storyboard */,
 				B641C0FB264448B0001CEC2E /* Info.plist */,
-				B60018652645815E0084BA36 /* GameScene.swift */,
+				B6D31016264DA64200C3AEEA /* Game */,
 			);
 			path = MyGame;
 			sourceTree = "<group>";
@@ -129,6 +131,15 @@
 				B641C111264448B1001CEC2E /* Info.plist */,
 			);
 			path = MyGameUITests;
+			sourceTree = "<group>";
+		};
+		B6D31016264DA64200C3AEEA /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				B60018652645815E0084BA36 /* GameScene.swift */,
+				B6D31017264DA66F00C3AEEA /* VectorMath.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				B641C0F2264448AE001CEC2E /* ViewController.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,
 				B60018662645815E0084BA36 /* GameScene.swift in Sources */,
+				B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */,
 				B641C0F0264448AE001CEC2E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

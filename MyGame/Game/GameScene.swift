@@ -4,6 +4,11 @@
 //
 //  Created by ITPathways on 5/7/21.
 //
+/*
+ To do:
+ 4. Give the player multiple balls
+ 5. Score
+ */
 
 import Foundation
 import SpriteKit
@@ -52,12 +57,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case .left:
             if paddle.position.x > paddle.frame.size.width/2 {
-                paddle.position = CGPoint(x: paddle.position.x-3, y: paddle.position.y)
+                paddle.position = CGPoint(x: paddle.position.x-4, y: paddle.position.y)
             }
             
         case .right:
             if paddle.position.x < view.frame.maxX-paddle.frame.size.width/2 {
-                paddle.position = CGPoint(x: paddle.position.x+3, y: paddle.position.y)
+                paddle.position = CGPoint(x: paddle.position.x+4, y: paddle.position.y)
             }
         }
     }
@@ -65,21 +70,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createPhysics() {
         self.physicsWorld.gravity = gravityVector
         self.physicsWorld.contactDelegate = self
-    }
-    
-    func makeVector(angleDegrees: CGFloat, speed: CGFloat) -> CGVector {
-        let y = sin((angleDegrees/180.0) * .pi) * speed
-        let x = cos((angleDegrees/180.0) * .pi) * speed
-        
-        return CGVector(dx: x, dy: y)
-    }
-    
-    func vectorDegrees(vector: CGVector) -> CGFloat {
-        return atan2(vector.dy, vector.dx) * 180.0 / .pi
-    }
-    
-    func vectorLength(vector: CGVector) -> CGFloat {
-        return sqrt((vector.dy * vector.dy) + (vector.dx * vector.dx))
     }
     
     fileprivate func createABall(_ view: SKView, _ i: Int) {
