@@ -93,11 +93,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
         let xVelocity: CGFloat
         if GKARC4RandomSource.sharedRandom().nextBool() {
-            xVelocity = sqrt(speed*speed+yVelocity*yVelocity) * -1
+            xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
         }
         else {
-            xVelocity = sqrt(speed*speed+yVelocity*yVelocity)
+            xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
         }
+ 
         ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
         
