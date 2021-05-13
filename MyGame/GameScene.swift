@@ -17,7 +17,7 @@ enum PaddleDirection {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var ball: SKShapeNode?
+    var balls = [SKShapeNode]()
     var paddle: SKShapeNode?
     var bottomBarrier: SKShapeNode?
     var bricks = [SKShapeNode]()
@@ -84,35 +84,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createBall() {
         guard let view = self.view else { return }
         
-        let ball = SKShapeNode(circleOfRadius: 10)
-        
-        ball.position = CGPoint(x: view.frame.midX, y: 20)
-        ball.fillColor = .white
-        
-        let speed: CGFloat = 140
-        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
-        let xVelocity: CGFloat
-        if GKARC4RandomSource.sharedRandom().nextBool() {
-            xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
+        let numBalls = 1
+        self.balls.removeAll()
+        for i in 0..<numBalls {
+            let ball = SKShapeNode(circleOfRadius: 10)
+            
+            ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 20)
+            ball.fillColor = .white
+            
+            let speed: CGFloat = 140
+            let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
+            let xVelocity: CGFloat
+            if GKARC4RandomSource.sharedRandom().nextBool() {
+                xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
+            }
+            else {
+                xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
+            }
+            
+            ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+            ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
+            ball.physicsBody?.collisionBitMask = gameGroup
+            ball.physicsBody?.contactTestBitMask = gameGroup
+            
+            ball.physicsBody?.friction = 0
+            ball.physicsBody?.linearDamping = 0
+            ball.physicsBody?.allowsRotation = false
+            ball.physicsBody?.angularDamping = 0
+            ball.physicsBody?.restitution = 1
+            
+            self.balls.append(ball)
+            addChild(ball)
         }
-        else {
-            xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
-        }
- 
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
-        
-        ball.physicsBody?.collisionBitMask = gameGroup
-        ball.physicsBody?.contactTestBitMask = gameGroup
-        
-        ball.physicsBody?.friction = 0
-        ball.physicsBody?.linearDamping = 0
-        ball.physicsBody?.allowsRotation = false
-        ball.physicsBody?.angularDamping = 0
-        ball.physicsBody?.restitution = 1
-        
-        self.ball = ball
-        addChild(ball)
     }
     
     func makeSolidRectange(node: SKNode, size: CGSize) {
@@ -219,31 +222,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkBrickContact(_ contact: SKPhysicsContact) {
-        guard let ball = self.ball else { return }
-        
+        var done = false
         for brick in bricks {
-            if (contact.bodyA == ball.physicsBody && contact.bodyB == brick.physicsBody) ||
-                (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
-                brick.removeFromParent()
-                bricks.removeAll{$0 == brick}
+            if done {
                 break
+            }
+            for ball in self.balls {
+                if (contact.bodyA == ball.physicsBody && contact.bodyB == brick.physicsBody) ||
+                    (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
+                    brick.removeFromParent()
+                    bricks.removeAll{$0 == brick}
+                    done = true
+                    break
+                }
             }
         }
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        guard let ball = self.ball else { return }
         guard let bottomBarrier = self.bottomBarrier else { return }
 
-        if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
-            (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
-            endGame(text: "Game Over")
+        for ball in self.balls {
+            if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
+                (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
+                endGame(text: "Game Over")
+                return
+            }
         }
-        else {
-            checkPaddleContact(contact)
-            checkBrickContact(contact)
-            checkForWin()
-        }
+        
+        checkPaddleContact(contact)
+        checkBrickContact(contact)
+        checkForWin()
     }
     
     func checkForWin() {
@@ -253,18 +262,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func checkPaddleContact(_ contact: SKPhysicsContact) {
-        guard let ball = self.ball else { return }
         guard let paddle = self.paddle else { return }
         
-        if (contact.bodyA == ball.physicsBody && contact.bodyB == paddle.physicsBody) ||
-            (contact.bodyA == paddle.physicsBody && contact.bodyB == ball.physicsBody){
-            // Checks where on the paddle the ball touched and adjusts the ball's trajectory based on that.
-            // Possible solution: (ball.position.x-paddle.position.x)/50
-            if (ball.position.x<paddle.position.x) {
-                ball.physicsBody?.applyImpulse(CGVector(dx: -1, dy: 0))
-            }
-            else {
-                ball.physicsBody?.applyImpulse(CGVector(dx: 1, dy: 0))
+        for ball in self.balls {
+            if (contact.bodyA == ball.physicsBody && contact.bodyB == paddle.physicsBody) ||
+                (contact.bodyA == paddle.physicsBody && contact.bodyB == ball.physicsBody){
+                // Checks where on the paddle the ball touched and adjusts the ball's trajectory based on that.
+                // Possible solution: (ball.position.x-paddle.position.x)/50
+                if (ball.position.x<paddle.position.x) {
+                    ball.physicsBody?.applyImpulse(CGVector(dx: -1, dy: 0))
+                }
+                else {
+                    ball.physicsBody?.applyImpulse(CGVector(dx: 1, dy: 0))
+                }
             }
         }
     }
