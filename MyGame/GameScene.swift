@@ -66,6 +66,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.contactDelegate = self
     }
     
+    func makeVector(angleDegrees: CGFloat, speed: CGFloat) -> CGVector {
+        let y = sin((angleDegrees/180.0) * .pi) * speed
+        let x = cos((angleDegrees/180.0) * .pi) * speed
+        
+        return CGVector(dx: x, dy: y)
+    }
+    
+    func vectorDegrees(vector: CGVector) -> CGFloat {
+        return atan2(vector.dy, vector.dx) * 180.0 / .pi
+    }
+    
+    func vectorLength(vector: CGVector) -> CGFloat {
+        return sqrt((vector.dy * vector.dy) + (vector.dx * vector.dx))
+    }
+    
     func createBall() {
         guard let view = self.view else { return }
         
