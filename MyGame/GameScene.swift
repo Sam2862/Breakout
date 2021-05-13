@@ -18,6 +18,7 @@ enum PaddleDirection {
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var balls = [SKShapeNode]()
+    var numLives = 3
     var paddle: SKShapeNode?
     var bottomBarrier: SKShapeNode?
     var bricks = [SKShapeNode]()
@@ -81,40 +82,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return sqrt((vector.dy * vector.dy) + (vector.dx * vector.dx))
     }
     
+    fileprivate func createABall(_ view: SKView, _ i: Int) {
+        let ball = SKShapeNode(circleOfRadius: 10)
+        
+        ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 40)
+        ball.fillColor = .white
+        
+        let speed: CGFloat = 140
+        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
+        let xVelocity: CGFloat
+        if GKARC4RandomSource.sharedRandom().nextBool() {
+            xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
+        }
+        else {
+            xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
+        }
+        
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
+        ball.physicsBody?.collisionBitMask = gameGroup
+        ball.physicsBody?.contactTestBitMask = gameGroup
+        
+        ball.physicsBody?.friction = 0
+        ball.physicsBody?.linearDamping = 0
+        ball.physicsBody?.allowsRotation = false
+        ball.physicsBody?.angularDamping = 0
+        ball.physicsBody?.restitution = 1
+        
+        self.balls.append(ball)
+        addChild(ball)
+    }
+    
     func createBall() {
         guard let view = self.view else { return }
         
         let numBalls = 1
         self.balls.removeAll()
         for i in 0..<numBalls {
-            let ball = SKShapeNode(circleOfRadius: 10)
-            
-            ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 20)
-            ball.fillColor = .white
-            
-            let speed: CGFloat = 140
-            let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
-            let xVelocity: CGFloat
-            if GKARC4RandomSource.sharedRandom().nextBool() {
-                xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
-            }
-            else {
-                xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
-            }
-            
-            ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-            ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
-            ball.physicsBody?.collisionBitMask = gameGroup
-            ball.physicsBody?.contactTestBitMask = gameGroup
-            
-            ball.physicsBody?.friction = 0
-            ball.physicsBody?.linearDamping = 0
-            ball.physicsBody?.allowsRotation = false
-            ball.physicsBody?.angularDamping = 0
-            ball.physicsBody?.restitution = 1
-            
-            self.balls.append(ball)
-            addChild(ball)
+            createABall(view, i)
         }
     }
     
@@ -241,12 +246,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         guard let bottomBarrier = self.bottomBarrier else { return }
+        guard let view = self.view else { return }
 
         for ball in self.balls {
             if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
                 (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
-                endGame(text: "Game Over")
-                return
+                numLives -= 1
+                if numLives == 0 {
+                    endGame(text: "Game Over")
+                    return
+                }
+                else {
+                    ball.removeFromParent()
+                    balls.removeAll(where: {$0 == ball})
+                    createABall(view, 0)
+                    break
+                }
             }
         }
         
@@ -287,7 +302,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel.fontSize = 20
         gameOverLabel.fontColor = .white
         gameOverLabel.position = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
-
+        
+        numLives = 3
         self.gameOverLabel = gameOverLabel
         addChild(gameOverLabel)
     }
