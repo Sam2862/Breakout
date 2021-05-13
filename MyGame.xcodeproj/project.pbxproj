@@ -17,6 +17,8 @@
 		B641C105264448B1001CEC2E /* MyGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C104264448B1001CEC2E /* MyGameTests.swift */; };
 		B641C110264448B1001CEC2E /* MyGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C10F264448B1001CEC2E /* MyGameUITests.swift */; };
 		B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31017264DA66F00C3AEEA /* VectorMath.swift */; };
+		B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */; };
+		B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DEB74C264DAA3F005BFA11 /* Barrier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		B641C10F264448B1001CEC2E /* MyGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameUITests.swift; sourceTree = "<group>"; };
 		B641C111264448B1001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D31017264DA66F00C3AEEA /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
+		B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidRectangle.swift; sourceTree = "<group>"; };
+		B6DEB74C264DAA3F005BFA11 /* Barrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			children = (
 				B60018652645815E0084BA36 /* GameScene.swift */,
 				B6D31017264DA66F00C3AEEA /* VectorMath.swift */,
+				B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */,
+				B6DEB74C264DAA3F005BFA11 /* Barrier.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -273,6 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B641C0F2264448AE001CEC2E /* ViewController.swift in Sources */,
+				B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */,
+				B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,
 				B60018662645815E0084BA36 /* GameScene.swift in Sources */,
 				B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */,

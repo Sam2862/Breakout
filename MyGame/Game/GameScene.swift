@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var balls = [SKShapeNode]()
     var numLives = 3
     var paddle: SKShapeNode?
-    var bottomBarrier: SKShapeNode?
+    var bottomBarrier: Barrier?
     var bricks = [SKShapeNode]()
     var paddleDirection = PaddleDirection.still
     var gameOverLabel: SKLabelNode?
@@ -144,33 +144,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let view = self.view else { return }
         
         let size = CGSize(width: 1, height: view.frame.size.height)
-        let leftBarrier = SKShapeNode(rectOf: size)
+        let leftBarrier = Barrier(size: size)
         leftBarrier.position = CGPoint(x: 0, y: view.frame.midY)
-        leftBarrier.strokeColor = .blue
         
-        makeSolidRectange(node: leftBarrier, size: size)
         addChild(leftBarrier)
         
-        let rightBarrier = SKShapeNode(rectOf: size)
+        let rightBarrier = Barrier(size: size)
         rightBarrier.position = CGPoint(x: view.frame.size.width, y: view.frame.midY)
-        rightBarrier.strokeColor = .blue
         
-        makeSolidRectange(node: rightBarrier, size: size)
         addChild(rightBarrier)
         
         let horizontalSize = CGSize(width: view.frame.size.width, height: 1)
-        let topBarrier = SKShapeNode(rectOf: horizontalSize)
+        let topBarrier = Barrier(size: horizontalSize)
         topBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.maxY)
-        topBarrier.strokeColor = .blue
         
-        makeSolidRectange(node: topBarrier, size: horizontalSize)
         addChild(topBarrier)
         
-        let bottomBarrier = SKShapeNode(rectOf: horizontalSize)
+        let bottomBarrier = Barrier(size: horizontalSize)
         bottomBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.minY)
-        bottomBarrier.strokeColor = .blue
-        
-        makeSolidRectange(node: bottomBarrier, size: horizontalSize)
         
         self.bottomBarrier = bottomBarrier
         addChild(bottomBarrier)
