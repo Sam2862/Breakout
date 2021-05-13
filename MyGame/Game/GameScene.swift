@@ -130,11 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let paddle = SKShapeNode(rectOf: size)
         paddle.position = CGPoint(x: view.frame.midX, y: size.height)
         paddle.fillColor = .darkGray
-        paddle.physicsBody = SKPhysicsBody(rectangleOf: size)
-        paddle.physicsBody?.isDynamic = false
-        paddle.physicsBody?.friction = 0
-        paddle.physicsBody?.restitution = 1
-        paddle.physicsBody?.allowsRotation = false
+        makeSolidRectange(node: paddle, size: size)
         
         self.paddle = paddle
         addChild(paddle)
