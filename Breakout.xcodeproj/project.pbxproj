@@ -18,6 +18,7 @@
 		B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31017264DA66F00C3AEEA /* VectorMath.swift */; };
 		B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */; };
 		B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DEB74C264DAA3F005BFA11 /* Barrier.swift */; };
+		B6F0E0DE2652E721003DA239 /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0E0DD2652E721003DA239 /* Brick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B6D31017264DA66F00C3AEEA /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidRectangle.swift; sourceTree = "<group>"; };
 		B6DEB74C264DAA3F005BFA11 /* Barrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrier.swift; sourceTree = "<group>"; };
+		B6F0E0DD2652E721003DA239 /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				B6D31017264DA66F00C3AEEA /* VectorMath.swift */,
 				B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */,
 				B6DEB74C264DAA3F005BFA11 /* Barrier.swift */,
+				B6F0E0DD2652E721003DA239 /* Brick.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B641C0F2264448AE001CEC2E /* ViewController.swift in Sources */,
+				B6F0E0DE2652E721003DA239 /* Brick.swift in Sources */,
 				B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */,
 				B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,

@@ -26,7 +26,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     var numLives = 3
     var paddle: SKShapeNode?
     var bottomBarrier: Barrier?
-    var bricks = [SKShapeNode]()
+    var bricks = [Brick]()
     var paddleDirection = PaddleDirection.still
     var gameOverLabel: SKLabelNode?
     
@@ -165,7 +165,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
     func createBricks() {
         guard let view = self.view else { return }
-        bricks = [SKShapeNode]()
+        bricks = [Brick]()
         
         let brickWidth: CGFloat = 40
         let brickHeight: CGFloat = 20
@@ -173,11 +173,9 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         let numBricks: Int = Int(view.frame.size.width/brickWidth)
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
-                let brick = SKShapeNode(rectOf: brickSize)
+                let brick = Brick(size: brickSize)
                 brick.position = CGPoint(x: view.frame.minX+brickWidth/2+(brickWidth*CGFloat(brickX)), y: (view.frame.maxY-brickHeight)-(CGFloat(brickY)*brickHeight))
-                brick.fillColor = .gray
                 
-                makeSolidRectange(node: brick, size: brickSize)
                 addChild(brick)
                 bricks.append(brick)
             }
