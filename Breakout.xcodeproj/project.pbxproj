@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B60018662645815E0084BA36 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60018652645815E0084BA36 /* GameScene.swift */; };
+		B60018662645815E0084BA36 /* BreakoutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60018652645815E0084BA36 /* BreakoutScene.swift */; };
 		B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C0ED264448AE001CEC2E /* AppDelegate.swift */; };
 		B641C0F0264448AE001CEC2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C0EF264448AE001CEC2E /* SceneDelegate.swift */; };
 		B641C0F2264448AE001CEC2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C0F1264448AE001CEC2E /* ViewController.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B60018652645815E0084BA36 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B60018652645815E0084BA36 /* BreakoutScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakoutScene.swift; sourceTree = "<group>"; };
 		B641C0EA264448AE001CEC2E /* Breakout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breakout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B641C0ED264448AE001CEC2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B641C0EF264448AE001CEC2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		B6D31016264DA64200C3AEEA /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				B60018652645815E0084BA36 /* GameScene.swift */,
+				B60018652645815E0084BA36 /* BreakoutScene.swift */,
 				B6D31017264DA66F00C3AEEA /* VectorMath.swift */,
 				B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */,
 				B6DEB74C264DAA3F005BFA11 /* Barrier.swift */,
@@ -223,7 +223,7 @@
 				B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */,
 				B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,
-				B60018662645815E0084BA36 /* GameScene.swift in Sources */,
+				B60018662645815E0084BA36 /* BreakoutScene.swift in Sources */,
 				B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */,
 				B641C0F0264448AE001CEC2E /* SceneDelegate.swift in Sources */,
 			);
@@ -425,14 +425,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGameTests/Info.plist;
+				INFOPLIST_FILE = BreakoutTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGameTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.BreakoutTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,14 +446,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGameTests/Info.plist;
+				INFOPLIST_FILE = BreakoutTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGameTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.BreakoutTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

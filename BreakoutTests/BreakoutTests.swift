@@ -1,14 +1,15 @@
 //
-//  MyGameTests.swift
-//  MyGameTests
+//  BreakoutTests.swift
+//  BreakoutTests
 //
-//  Created by ITPathways on 5/6/21.
+//  Created by Samuel K on 5/6/21.
 //
 
 import XCTest
-@testable import MyGame
+import CoreGraphics
+@testable import Breakout
 
-class MyGameTests: XCTestCase {
+class BreakoutTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -18,16 +19,16 @@ class MyGameTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testVectorLength() throws {
+        let vector = CGVector(dx: 1, dy: 0)
+        XCTAssertEqual(VectorMath.length(vector: vector), 1)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testVectorAngle() throws {
+        let vector = CGVector(dx: 1, dy: 0)
+        XCTAssertEqual(VectorMath.degrees(vector: vector), 0)
+        
+        let vector2 = CGVector(dx: 0, dy: 1)
+        XCTAssertEqual(VectorMath.degrees(vector: vector2), 90)
     }
-
 }

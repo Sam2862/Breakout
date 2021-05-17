@@ -1,8 +1,8 @@
 //
-//  GameScene.swift
-//  MyGame
+//  BreakoutScene.swift
+//  Breakout
 //
-//  Created by ITPathways on 5/7/21.
+//  Created by Samuel K on 5/7/21.
 //
 /*
  To do:
@@ -20,7 +20,7 @@ enum PaddleDirection {
     case right
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
     var balls = [SKShapeNode]()
     var numLives = 3

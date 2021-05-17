@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  MyGame
+//  Breakout
 //
-//  Created by ITPathways on 5/6/21.
+//  Created by Samuel K on 5/6/21.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import SpriteKit
 
 class ViewController: UIViewController {
 
-    var scene: GameScene?
+    var scene: BreakoutScene?
 
     override func loadView() {
         super.loadView()
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
 
     func setupScene() {
         if let view = self.view as? SKView, scene == nil {
-            let scene = GameScene(size: view.bounds.size)
+            let scene = BreakoutScene(size: view.bounds.size)
             view.presentScene(scene)
             self.scene = scene
         }

@@ -1,8 +1,8 @@
 //
 //  Barrier.swift
-//  MyGame
+//  Breakout
 //
-//  Created by ITPathways on 5/13/21.
+//  Created by Samuel K on 5/13/21.
 //
 
 import Foundation
