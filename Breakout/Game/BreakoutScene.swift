@@ -6,7 +6,7 @@
 //
 /*
  To do:
- 4. Give the player multiple balls
+ 
  5. Score
  */
 
@@ -29,7 +29,10 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     var bricks = [Brick]()
     var paddleDirection = PaddleDirection.still
     var gameOverLabel: SKLabelNode?
+    var score: Int = 0
+    var scoreLabel: SKLabelNode?
     
+    let textDisplayHeight: CGFloat = 20
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
     
@@ -45,6 +48,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         createPaddle()
         createBarriers()
         createBricks()
+        createScore()
         gameOverLabel = nil
     }
     
@@ -162,12 +166,26 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
                 let brick = Brick(size: brickSize)
-                brick.position = CGPoint(x: view.frame.minX+brickWidth/2+(brickWidth*CGFloat(brickX)), y: (view.frame.maxY-brickHeight)-(CGFloat(brickY)*brickHeight))
+                brick.position = CGPoint(x: view.frame.minX+brickWidth/2+(brickWidth*CGFloat(brickX)), y: (view.frame.maxY-brickHeight-textDisplayHeight)-(CGFloat(brickY)*brickHeight))
                 
                 addChild(brick)
                 bricks.append(brick)
             }
         }
+    }
+    
+    func createScore() {
+        guard let view = self.view else { return }
+        
+        score = 0
+        let scoreLabel = SKLabelNode(text: "Score: \(score)")
+        scoreLabel.fontSize = 20
+        scoreLabel.fontColor = .white
+        scoreLabel.fontName = "Courier"
+        scoreLabel.position = CGPoint(x: view.frame.maxX-70, y: view.frame.maxY-textDisplayHeight)
+        
+        self.scoreLabel = scoreLabel
+        addChild(scoreLabel)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -200,6 +218,8 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
                     (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
                     brick.removeFromParent()
                     bricks.removeAll{$0 == brick}
+                    score += 10
+                    scoreLabel?.text = "Score: \(score)"
                     done = true
                     break
                 }
@@ -264,6 +284,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         let gameOverLabel = SKLabelNode(text: text)
         gameOverLabel.fontSize = 20
         gameOverLabel.fontColor = .white
+        gameOverLabel.fontName = "Courier"
         gameOverLabel.position = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
         
         numLives = 3
