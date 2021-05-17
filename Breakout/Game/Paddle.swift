@@ -8,6 +8,12 @@
 import Foundation
 import SpriteKit
 
+enum PaddleDirection {
+    case still
+    case left
+    case right
+}
+
 class Paddle: SolidRectangle {
     override init(size: CGSize) {
         super.init(size: size)

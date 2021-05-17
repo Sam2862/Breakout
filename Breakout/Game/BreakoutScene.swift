@@ -14,12 +14,6 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-enum PaddleDirection {
-    case still
-    case left
-    case right
-}
-
 class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
     var balls = [SKShapeNode]()
