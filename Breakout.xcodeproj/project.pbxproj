@@ -14,8 +14,7 @@
 		B641C0F5264448AE001CEC2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F3264448AE001CEC2E /* Main.storyboard */; };
 		B641C0F7264448B0001CEC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F6264448B0001CEC2E /* Assets.xcassets */; };
 		B641C0FA264448B0001CEC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F8264448B0001CEC2E /* LaunchScreen.storyboard */; };
-		B641C105264448B1001CEC2E /* MyGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C104264448B1001CEC2E /* MyGameTests.swift */; };
-		B641C110264448B1001CEC2E /* MyGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C10F264448B1001CEC2E /* MyGameUITests.swift */; };
+		B641C105264448B1001CEC2E /* BreakoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C104264448B1001CEC2E /* BreakoutTests.swift */; };
 		B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31017264DA66F00C3AEEA /* VectorMath.swift */; };
 		B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */; };
 		B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DEB74C264DAA3F005BFA11 /* Barrier.swift */; };
@@ -29,18 +28,11 @@
 			remoteGlobalIDString = B641C0E9264448AE001CEC2E;
 			remoteInfo = MyGame;
 		};
-		B641C10C264448B1001CEC2E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B641C0E2264448AE001CEC2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B641C0E9264448AE001CEC2E;
-			remoteInfo = MyGame;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B60018652645815E0084BA36 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		B641C0EA264448AE001CEC2E /* MyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B641C0EA264448AE001CEC2E /* Breakout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breakout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B641C0ED264448AE001CEC2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B641C0EF264448AE001CEC2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B641C0F1264448AE001CEC2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,12 +40,9 @@
 		B641C0F6264448B0001CEC2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B641C0F9264448B0001CEC2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B641C0FB264448B0001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B641C100264448B1001CEC2E /* MyGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B641C104264448B1001CEC2E /* MyGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameTests.swift; sourceTree = "<group>"; };
+		B641C100264448B1001CEC2E /* BreakoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreakoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B641C104264448B1001CEC2E /* BreakoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakoutTests.swift; sourceTree = "<group>"; };
 		B641C106264448B1001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B641C10B264448B1001CEC2E /* MyGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B641C10F264448B1001CEC2E /* MyGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameUITests.swift; sourceTree = "<group>"; };
-		B641C111264448B1001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D31017264DA66F00C3AEEA /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidRectangle.swift; sourceTree = "<group>"; };
 		B6DEB74C264DAA3F005BFA11 /* Barrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrier.swift; sourceTree = "<group>"; };
@@ -74,22 +63,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B641C108264448B1001CEC2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B641C0E1264448AE001CEC2E = {
 			isa = PBXGroup;
 			children = (
-				B641C0EC264448AE001CEC2E /* MyGame */,
-				B641C103264448B1001CEC2E /* MyGameTests */,
-				B641C10E264448B1001CEC2E /* MyGameUITests */,
+				B641C0EC264448AE001CEC2E /* Breakout */,
+				B641C103264448B1001CEC2E /* BreakoutTests */,
 				B641C0EB264448AE001CEC2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,14 +78,13 @@
 		B641C0EB264448AE001CEC2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B641C0EA264448AE001CEC2E /* MyGame.app */,
-				B641C100264448B1001CEC2E /* MyGameTests.xctest */,
-				B641C10B264448B1001CEC2E /* MyGameUITests.xctest */,
+				B641C0EA264448AE001CEC2E /* Breakout.app */,
+				B641C100264448B1001CEC2E /* BreakoutTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B641C0EC264448AE001CEC2E /* MyGame */ = {
+		B641C0EC264448AE001CEC2E /* Breakout */ = {
 			isa = PBXGroup;
 			children = (
 				B641C0ED264448AE001CEC2E /* AppDelegate.swift */,
@@ -116,25 +96,16 @@
 				B641C0FB264448B0001CEC2E /* Info.plist */,
 				B6D31016264DA64200C3AEEA /* Game */,
 			);
-			path = MyGame;
+			path = Breakout;
 			sourceTree = "<group>";
 		};
-		B641C103264448B1001CEC2E /* MyGameTests */ = {
+		B641C103264448B1001CEC2E /* BreakoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				B641C104264448B1001CEC2E /* MyGameTests.swift */,
+				B641C104264448B1001CEC2E /* BreakoutTests.swift */,
 				B641C106264448B1001CEC2E /* Info.plist */,
 			);
-			path = MyGameTests;
-			sourceTree = "<group>";
-		};
-		B641C10E264448B1001CEC2E /* MyGameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B641C10F264448B1001CEC2E /* MyGameUITests.swift */,
-				B641C111264448B1001CEC2E /* Info.plist */,
-			);
-			path = MyGameUITests;
+			path = BreakoutTests;
 			sourceTree = "<group>";
 		};
 		B6D31016264DA64200C3AEEA /* Game */ = {
@@ -151,9 +122,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B641C0E9264448AE001CEC2E /* MyGame */ = {
+		B641C0E9264448AE001CEC2E /* Breakout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B641C114264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGame" */;
+			buildConfigurationList = B641C114264448B1001CEC2E /* Build configuration list for PBXNativeTarget "Breakout" */;
 			buildPhases = (
 				B641C0E6264448AE001CEC2E /* Sources */,
 				B641C0E7264448AE001CEC2E /* Frameworks */,
@@ -163,14 +134,14 @@
 			);
 			dependencies = (
 			);
-			name = MyGame;
+			name = Breakout;
 			productName = MyGame;
-			productReference = B641C0EA264448AE001CEC2E /* MyGame.app */;
+			productReference = B641C0EA264448AE001CEC2E /* Breakout.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B641C0FF264448B1001CEC2E /* MyGameTests */ = {
+		B641C0FF264448B1001CEC2E /* BreakoutTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B641C117264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGameTests" */;
+			buildConfigurationList = B641C117264448B1001CEC2E /* Build configuration list for PBXNativeTarget "BreakoutTests" */;
 			buildPhases = (
 				B641C0FC264448B1001CEC2E /* Sources */,
 				B641C0FD264448B1001CEC2E /* Frameworks */,
@@ -181,28 +152,10 @@
 			dependencies = (
 				B641C102264448B1001CEC2E /* PBXTargetDependency */,
 			);
-			name = MyGameTests;
+			name = BreakoutTests;
 			productName = MyGameTests;
-			productReference = B641C100264448B1001CEC2E /* MyGameTests.xctest */;
+			productReference = B641C100264448B1001CEC2E /* BreakoutTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B641C10A264448B1001CEC2E /* MyGameUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B641C11A264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGameUITests" */;
-			buildPhases = (
-				B641C107264448B1001CEC2E /* Sources */,
-				B641C108264448B1001CEC2E /* Frameworks */,
-				B641C109264448B1001CEC2E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B641C10D264448B1001CEC2E /* PBXTargetDependency */,
-			);
-			name = MyGameUITests;
-			productName = MyGameUITests;
-			productReference = B641C10B264448B1001CEC2E /* MyGameUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -220,13 +173,9 @@
 						CreatedOnToolsVersion = 12.1;
 						TestTargetID = B641C0E9264448AE001CEC2E;
 					};
-					B641C10A264448B1001CEC2E = {
-						CreatedOnToolsVersion = 12.1;
-						TestTargetID = B641C0E9264448AE001CEC2E;
-					};
 				};
 			};
-			buildConfigurationList = B641C0E5264448AE001CEC2E /* Build configuration list for PBXProject "MyGame" */;
+			buildConfigurationList = B641C0E5264448AE001CEC2E /* Build configuration list for PBXProject "Breakout" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -239,9 +188,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B641C0E9264448AE001CEC2E /* MyGame */,
-				B641C0FF264448B1001CEC2E /* MyGameTests */,
-				B641C10A264448B1001CEC2E /* MyGameUITests */,
+				B641C0E9264448AE001CEC2E /* Breakout */,
+				B641C0FF264448B1001CEC2E /* BreakoutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,13 +206,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B641C0FE264448B1001CEC2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B641C109264448B1001CEC2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,15 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B641C105264448B1001CEC2E /* MyGameTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B641C107264448B1001CEC2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B641C110264448B1001CEC2E /* MyGameUITests.swift in Sources */,
+				B641C105264448B1001CEC2E /* BreakoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,13 +242,8 @@
 /* Begin PBXTargetDependency section */
 		B641C102264448B1001CEC2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B641C0E9264448AE001CEC2E /* MyGame */;
+			target = B641C0E9264448AE001CEC2E /* Breakout */;
 			targetProxy = B641C101264448B1001CEC2E /* PBXContainerItemProxy */;
-		};
-		B641C10D264448B1001CEC2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B641C0E9264448AE001CEC2E /* MyGame */;
-			targetProxy = B641C10C264448B1001CEC2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -461,12 +389,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGame/Info.plist;
+				INFOPLIST_FILE = Breakout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGame";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.Breakout";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,12 +407,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGame/Info.plist;
+				INFOPLIST_FILE = Breakout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGame";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.Breakout";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -508,7 +436,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyGame.app/MyGame";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Breakout.app/Breakout";
 			};
 			name = Debug;
 		};
@@ -529,52 +457,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyGame.app/MyGame";
-			};
-			name = Release;
-		};
-		B641C11B264448B1001CEC2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGameUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGameUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyGame;
-			};
-			name = Debug;
-		};
-		B641C11C264448B1001CEC2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyGameUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.MyGameUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyGame;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Breakout.app/Breakout";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B641C0E5264448AE001CEC2E /* Build configuration list for PBXProject "MyGame" */ = {
+		B641C0E5264448AE001CEC2E /* Build configuration list for PBXProject "Breakout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B641C112264448B1001CEC2E /* Debug */,
@@ -583,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B641C114264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGame" */ = {
+		B641C114264448B1001CEC2E /* Build configuration list for PBXNativeTarget "Breakout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B641C115264448B1001CEC2E /* Debug */,
@@ -592,20 +482,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B641C117264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGameTests" */ = {
+		B641C117264448B1001CEC2E /* Build configuration list for PBXNativeTarget "BreakoutTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B641C118264448B1001CEC2E /* Debug */,
 				B641C119264448B1001CEC2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B641C11A264448B1001CEC2E /* Build configuration list for PBXNativeTarget "MyGameUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B641C11B264448B1001CEC2E /* Debug */,
-				B641C11C264448B1001CEC2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

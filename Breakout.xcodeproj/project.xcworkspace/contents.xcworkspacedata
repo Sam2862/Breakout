@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/ITPathways/Desktop/Coding/MyGame/Breakout.xcodeproj">
    </FileRef>
 </Workspace>
