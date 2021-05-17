@@ -24,7 +24,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
     var balls = [SKShapeNode]()
     var numLives = 3
-    var paddle: SKShapeNode?
+    var paddle: Paddle?
     var bottomBarrier: Barrier?
     var bricks = [Brick]()
     var paddleDirection = PaddleDirection.still
@@ -56,12 +56,12 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         case .still:
             break
         case .left:
-            if paddle.position.x > paddle.frame.size.width/2 {
+            if paddle.position.x > paddle.width/2 {
                 paddle.position = CGPoint(x: paddle.position.x-4, y: paddle.position.y)
             }
             
         case .right:
-            if paddle.position.x < view.frame.maxX-paddle.frame.size.width/2 {
+            if paddle.position.x < view.frame.maxX-paddle.width/2 {
                 paddle.position = CGPoint(x: paddle.position.x+4, y: paddle.position.y)
             }
         }
@@ -113,24 +113,12 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func makeSolidRectange(node: SKNode, size: CGSize) {
-        node.physicsBody = SKPhysicsBody(rectangleOf: size)
-        node.physicsBody?.affectedByGravity = false
-        node.physicsBody?.isDynamic = false
-        node.physicsBody?.collisionBitMask = 1
-        node.physicsBody?.contactTestBitMask = 1
-        node.physicsBody?.friction = 0
-        node.physicsBody?.restitution = 1
-    }
-    
     func createPaddle() {
         guard let view = self.view else { return }
         
         let size = CGSize(width: 100, height: 5)
-        let paddle = SKShapeNode(rectOf: size)
+        let paddle = Paddle(size: size)
         paddle.position = CGPoint(x: view.frame.midX, y: size.height)
-        paddle.fillColor = .darkGray
-        makeSolidRectange(node: paddle, size: size)
         
         self.paddle = paddle
         addChild(paddle)

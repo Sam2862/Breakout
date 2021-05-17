@@ -10,6 +10,9 @@ import SpriteKit
 
 class SolidRectangle: SKNode {
     var rectangle: SKShapeNode?
+    var width: CGFloat {
+        return rectangle?.frame.size.width ?? self.frame.width
+    }
     init(size: CGSize) {
         super.init()
         let rectangle = SKShapeNode(rectOf: size)

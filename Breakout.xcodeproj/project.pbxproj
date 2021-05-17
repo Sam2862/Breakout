@@ -19,6 +19,7 @@
 		B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */; };
 		B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DEB74C264DAA3F005BFA11 /* Barrier.swift */; };
 		B6F0E0DE2652E721003DA239 /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0E0DD2652E721003DA239 /* Brick.swift */; };
+		B6F0E0E02652E969003DA239 /* Paddle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F0E0DF2652E969003DA239 /* Paddle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidRectangle.swift; sourceTree = "<group>"; };
 		B6DEB74C264DAA3F005BFA11 /* Barrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrier.swift; sourceTree = "<group>"; };
 		B6F0E0DD2652E721003DA239 /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		B6F0E0DF2652E969003DA239 /* Paddle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */,
 				B6DEB74C264DAA3F005BFA11 /* Barrier.swift */,
 				B6F0E0DD2652E721003DA239 /* Brick.swift */,
+				B6F0E0DF2652E969003DA239 /* Paddle.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				B641C0F2264448AE001CEC2E /* ViewController.swift in Sources */,
 				B6F0E0DE2652E721003DA239 /* Brick.swift in Sources */,
 				B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */,
+				B6F0E0E02652E969003DA239 /* Paddle.swift in Sources */,
 				B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,
 				B60018662645815E0084BA36 /* BreakoutScene.swift in Sources */,
