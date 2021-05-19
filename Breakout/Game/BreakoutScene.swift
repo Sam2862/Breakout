@@ -25,6 +25,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     var gameOverLabel: SKLabelNode?
     var score: Int = 0
     var scoreLabel: SKLabelNode?
+    var livesLabel: SKLabelNode?
     
     let textDisplayHeight: CGFloat = 20
     let gravityVector = CGVector(dx: 0, dy: 0)
@@ -43,6 +44,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         createBarriers()
         createBricks()
         createScore()
+        createLives()
         gameOverLabel = nil
     }
     
@@ -181,7 +183,20 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         self.scoreLabel = scoreLabel
         addChild(scoreLabel)
     }
-
+    
+    func createLives() {
+        guard let view = self.view else { return }
+        
+        let livesLabel = SKLabelNode(text: "Lives: \(numLives-1)")
+        livesLabel.fontSize = 20
+        livesLabel.fontColor = .white
+        livesLabel.fontName = "Courier"
+        livesLabel.position = CGPoint(x: 70, y: view.frame.maxY-textDisplayHeight)
+        
+        self.livesLabel = livesLabel
+        addChild(livesLabel)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let view = self.view, let position = touches.first?.location(in: view) else { return }
         if gameOverLabel != nil {
@@ -229,6 +244,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
             if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
                 (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
                 numLives -= 1
+                livesLabel?.text = "Lives: \(numLives-1)"
                 if numLives == 0 {
                     endGame(text: "Game Over")
                     return
