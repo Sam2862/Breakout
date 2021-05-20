@@ -4,11 +4,6 @@
 //
 //  Created by Samuel K on 5/7/21.
 //
-/*
- To do:
- 
- 5. Score
- */
 
 import Foundation
 import SpriteKit
@@ -16,7 +11,7 @@ import GameplayKit
 
 class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
-    var balls = [SKShapeNode]()
+    var balls = [Ball]()
     var numLives = 3
     var paddle: Paddle?
     var bottomBarrier: Barrier?
@@ -39,7 +34,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     func startGame() {
         self.scene?.removeAllChildren()
         createPhysics()
-        createBall()
+        createBalls()
         createPaddle()
         createBarriers()
         createBricks()
@@ -71,39 +66,15 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = gravityVector
         self.physicsWorld.contactDelegate = self
     }
-    
     fileprivate func createABall(_ view: SKView, _ i: Int) {
-        let ball = SKShapeNode(circleOfRadius: 10)
-        
+        let ball = Ball(view, i)
         ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 40)
-        ball.fillColor = .white
-        
-        let speed: CGFloat = 140
-        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
-        let xVelocity: CGFloat
-        if GKARC4RandomSource.sharedRandom().nextBool() {
-            xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1
-        }
-        else {
-            xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
-        }
-        
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
-        ball.physicsBody?.collisionBitMask = gameGroup
-        ball.physicsBody?.contactTestBitMask = gameGroup
-        
-        ball.physicsBody?.friction = 0
-        ball.physicsBody?.linearDamping = 0
-        ball.physicsBody?.allowsRotation = false
-        ball.physicsBody?.angularDamping = 0
-        ball.physicsBody?.restitution = 1
         
         self.balls.append(ball)
         addChild(ball)
     }
     
-    func createBall() {
+    func createBalls() {
         guard let view = self.view else { return }
         
         let numBalls = 1
@@ -158,7 +129,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         let brickWidth: CGFloat = 40
         let brickHeight: CGFloat = 20
         let brickSize = CGSize(width: brickWidth, height: brickHeight)
-        let numBricks: Int = Int(view.frame.size.width/brickWidth)
+        let numBricks: Int = 1 //Int(view.frame.size.width/brickWidth)
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
                 let brick = Brick(size: brickSize)
