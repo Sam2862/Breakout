@@ -5,12 +5,15 @@
 //  Created by Samuel K on 5/7/21.
 //
 
+//Imports the necessary modules.
 import Foundation
 import SpriteKit
 import GameplayKit
 
+//Creates a main class for the game.
 class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
+//  Creates properties for each important part of the game.
     var balls = [Ball]()
     var numLives = 3
     var paddle: Paddle?
@@ -22,15 +25,18 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode?
     var livesLabel: SKLabelNode?
     
+//    Creates properties for important constants.
     let textDisplayHeight: CGFloat = 20
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
     
+//    Sets the background to blue and calls the startGame() function.
     override func didMove(to view: SKView) {
         self.backgroundColor = .blue
         startGame()
     }
     
+//    Calls all the functions needed to start the game.
     func startGame() {
         self.scene?.removeAllChildren()
         createPhysics()
@@ -40,9 +46,11 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         createBricks()
         createScore()
         createLives()
+//        Removes the text that displays at the end of the game.
         gameOverLabel = nil
     }
     
+//    Sets the direction of the paddle, as well as the speed.
     override func update(_ currentTime: TimeInterval) {
         guard let paddle = self.paddle else { return }
         guard let view = self.view else { return }
@@ -62,10 +70,13 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    Creates the rules for gravity and contact physics.
     func createPhysics() {
         self.physicsWorld.gravity = gravityVector
         self.physicsWorld.contactDelegate = self
     }
+    
+//    Creates a ball and adds it to the balls array (look at the Ball class for more details).
     fileprivate func createABall(_ view: SKView, _ i: Int) {
         let ball = Ball(view, i)
         ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 40)
@@ -74,6 +85,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         addChild(ball)
     }
     
+//    This function can create multiple balls on the screen at the same time. It's currently set to only create one.
     func createBalls() {
         guard let view = self.view else { return }
         
@@ -84,9 +96,9 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    Creates the paddle (look at the Paddle class for more details).
     func createPaddle() {
         guard let view = self.view else { return }
-        
         let size = CGSize(width: 100, height: 5)
         let paddle = Paddle(size: size)
         paddle.position = CGPoint(x: view.frame.midX, y: size.height)
@@ -95,6 +107,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         addChild(paddle)
     }
     
+//    Creates invisible barriers on all four sides of the screen.
     func createBarriers() {
         guard let view = self.view else { return }
         
@@ -118,10 +131,12 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         let bottomBarrier = Barrier(size: horizontalSize)
         bottomBarrier.position = CGPoint(x: view.frame.midX, y: view.frame.minY)
         
+//        The bottom barrier is a property because the player loses a life if the ball hits it.
         self.bottomBarrier = bottomBarrier
         addChild(bottomBarrier)
     }
     
+//    Creates the bricks at the top of the screen (look at the brick class for more details).
     func createBricks() {
         guard let view = self.view else { return }
         bricks = [Brick]()
@@ -129,7 +144,9 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         let brickWidth: CGFloat = 40
         let brickHeight: CGFloat = 20
         let brickSize = CGSize(width: brickWidth, height: brickHeight)
-        let numBricks: Int = 1 //Int(view.frame.size.width/brickWidth)
+//        Makes sure that there are enough bricks to fit on the screen.
+        let numBricks: Int = Int(view.frame.size.width/brickWidth)
+//        Creates the bricks in rows.
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
                 let brick = Brick(size: brickSize)
@@ -141,6 +158,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    Creates a label at the top of the screen that displays the score.
     func createScore() {
         guard let view = self.view else { return }
         
@@ -155,10 +173,11 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         addChild(scoreLabel)
     }
     
+//    Creates a label at the top of the screen that displays the player's remaining lives.
     func createLives() {
         guard let view = self.view else { return }
         
-        let livesLabel = SKLabelNode(text: "Lives: \(numLives-1)")
+        let livesLabel = SKLabelNode(text: "Lives: \(numLives)")
         livesLabel.fontSize = 20
         livesLabel.fontColor = .white
         livesLabel.fontName = "Courier"
@@ -168,11 +187,14 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         addChild(livesLabel)
     }
     
+//    Detects if the player is touching the screen.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        Lets the player restart the game by tapping the screen.
         guard let view = self.view, let position = touches.first?.location(in: view) else { return }
         if gameOverLabel != nil {
             startGame()
         }
+//        Changes the direction of the paddle depending on where the player touches the screen.
         else if position.x<view.frame.midX {
             self.paddleDirection = .left
         }
@@ -183,21 +205,26 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+//    Detects if the player isn't touching the screen.
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //    Stops the paddle from moving if the player is not touching the screen.
         self.paddleDirection = .still
     }
     
+//    Checks to see if the ball hit any bricks.
     func checkBrickContact(_ contact: SKPhysicsContact) {
         var done = false
         for brick in bricks {
             if done {
                 break
             }
+//            Removes the bricks hit by the ball.
             for ball in self.balls {
                 if (contact.bodyA == ball.physicsBody && contact.bodyB == brick.physicsBody) ||
                     (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
                     brick.removeFromParent()
                     bricks.removeAll{$0 == brick}
+//                    Changes the score.
                     score += 10
                     scoreLabel?.text = "Score: \(score)"
                     done = true
@@ -207,6 +234,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    Checks to see if the ball hit the bottom barrier.
     func didBegin(_ contact: SKPhysicsContact) {
         guard let bottomBarrier = self.bottomBarrier else { return }
         guard let view = self.view else { return }
@@ -214,12 +242,15 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         for ball in self.balls {
             if (contact.bodyA == ball.physicsBody && contact.bodyB == bottomBarrier.physicsBody) ||
                 (contact.bodyA == bottomBarrier.physicsBody && contact.bodyB == ball.physicsBody){
+//                Reduces the player's remaining lives by one.
                 numLives -= 1
-                livesLabel?.text = "Lives: \(numLives-1)"
+                livesLabel?.text = "Lives: \(numLives)"
+//                Ends the game if the player has zero lives.
                 if numLives == 0 {
                     endGame(text: "Game Over")
                     return
                 }
+//                Creates a new ball if the player still has lives left.
                 else {
                     ball.removeFromParent()
                     balls.removeAll(where: {$0 == ball})
