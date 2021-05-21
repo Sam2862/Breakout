@@ -23,8 +23,8 @@ class Ball: SKShapeNode {
         self.ball = ball
         ball.fillColor = .white
         
-        let speed: CGFloat = 140
-        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: 20))+90
+        let speed: CGFloat = constants.ballSpeed
+        let yVelocity = CGFloat(GKARC4RandomSource.sharedRandom().nextInt(upperBound: Int(constants.ballVelocityY1)))+constants.ballVelocityY2
         let xVelocity: CGFloat
         if GKARC4RandomSource.sharedRandom().nextBool() {
             xVelocity = sqrt(speed*speed-yVelocity*yVelocity) * -1

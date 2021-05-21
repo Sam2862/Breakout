@@ -45,5 +45,15 @@ class BreakoutConstants {
     var textDisplayHeight: CGFloat {
         return (designRatio*20)+safeAreaInsets.top
     }
+    var ballSpeed: CGFloat {
+        return designRatio*140
+    }
+    var ballVelocityY1: CGFloat {
+        return designRatio*20
+    }
+    var ballVelocityY2: CGFloat {
+        return designRatio*90
+    }
+    
     
 }
