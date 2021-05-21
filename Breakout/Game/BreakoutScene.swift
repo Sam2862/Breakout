@@ -250,7 +250,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
                     endGame(text: "Game Over")
                     return
                 }
-//                Creates a new ball if the player still has lives left.
+//                Removes the old ball and creates a new one if the player still has lives left.
                 else {
                     ball.removeFromParent()
                     balls.removeAll(where: {$0 == ball})
@@ -259,18 +259,20 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
+//        Checks if the ball made contact with the paddle or the bricks, as well as if the win conditions were met.
         checkPaddleContact(contact)
         checkBrickContact(contact)
         checkForWin()
     }
     
+//    Displays a win message if there are no more bricks left.
     func checkForWin() {
         if bricks.isEmpty {
             endGame(text: "Congratulations! You Win!")
         }
     }
     
+//    Applys a force to the ball depending on where it hits the paddle.
     func checkPaddleContact(_ contact: SKPhysicsContact) {
         guard let paddle = self.paddle else { return }
         
@@ -289,6 +291,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+//    Ends the game and resets the lives player's.
     func endGame(text: String) {
         guard let view = self.view else { return }
 

@@ -4,14 +4,17 @@
 //
 //  Created by ITPathways on 5/19/21.
 //
-
+//Imports the necessary functions.
 import Foundation
 import SpriteKit
 import GameplayKit
 
+//Creates a class for the ball.
 class Ball: SKShapeNode {
+//    Creates a variable for the ball.
     var ball: SKShapeNode?
     let gameGroup: UInt32 = 1
+//    Sets the size, color, and physics properties of the ball.
     init(_ view: SKView, _ i: Int) {
         super.init()
         let ball = SKShapeNode(circleOfRadius: 10)
