@@ -35,6 +35,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         self.backgroundColor = .blue
         self.constants.actualWidth = view.frame.width
+        self.constants.safeAreaInsets = view.safeAreaInsets
         startGame()
     }
     
@@ -104,7 +105,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         guard let view = self.view else { return }
         
         let paddle = Paddle(size: constants.paddleSize)
-        paddle.position = CGPoint(x: view.frame.midX, y: constants.paddleSize.height)
+        paddle.position = CGPoint(x: view.frame.midX, y: constants.paddleY)
         
         self.paddle = paddle
         addChild(paddle)
@@ -288,6 +289,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
                 else {
                     ball.physicsBody?.applyImpulse(CGVector(dx: 1, dy: 0))
                 }
+                ball.adjustAngle()
             }
         }
     }

@@ -11,6 +11,7 @@ import SpriteKit
 class BreakoutConstants {
     let defaultWidth: CGFloat = 320
     var actualWidth: CGFloat = 320
+    var safeAreaInsets = UIEdgeInsets.zero
     var designRatio: CGFloat {
         return actualWidth/defaultWidth
     }
@@ -22,6 +23,9 @@ class BreakoutConstants {
     }
     var paddleSize: CGSize {
         return CGSize(width: designRatio*100, height: designRatio*5)
+    }
+    var paddleY: CGFloat {
+        return paddleSize.height+safeAreaInsets.bottom
     }
     var brickWidth: CGFloat {
        return designRatio*40

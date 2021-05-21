@@ -49,4 +49,19 @@ class Ball: SKShapeNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func adjustAngle() {
+        guard let physicsBody = self.physicsBody else { return }
+        var angle = VectorMath.degrees(vector: physicsBody.velocity)
+        if angle>160.0 {
+            angle = 150.0
+        } else if angle<20.0 {
+            angle = 30.0
+        } else {
+            return
+        }
+        let newVelocity = VectorMath.make(angleDegrees: angle, speed: VectorMath.length(vector: physicsBody.velocity))
+        physicsBody.velocity = newVelocity
+        print(angle)
+    }
 }
