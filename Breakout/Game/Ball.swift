@@ -12,12 +12,14 @@ import GameplayKit
 //Creates a class for the ball.
 class Ball: SKShapeNode {
 //    Creates a variable for the ball.
+    let constants: BreakoutConstants
     var ball: SKShapeNode?
     let gameGroup: UInt32 = 1
 //    Sets the size, color, and physics properties of the ball.
-    init(_ view: SKView, _ i: Int) {
+    init(_ view: SKView, _ i: Int, _ constants: BreakoutConstants) {
+        self.constants = constants
         super.init()
-        let ball = SKShapeNode(circleOfRadius: 10)
+        let ball = SKShapeNode(circleOfRadius: constants.ballRadius)
         self.ball = ball
         ball.fillColor = .white
         
@@ -31,7 +33,7 @@ class Ball: SKShapeNode {
             xVelocity = sqrt(speed*speed-yVelocity*yVelocity)
         }
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: constants.ballRadius)
         self.physicsBody?.velocity = CGVector(dx: xVelocity, dy: yVelocity)
         self.physicsBody?.collisionBitMask = gameGroup
         self.physicsBody?.contactTestBitMask = gameGroup

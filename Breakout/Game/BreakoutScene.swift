@@ -26,6 +26,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     var livesLabel: SKLabelNode?
     
 //    Creates properties for important constants.
+    let constants = BreakoutConstants()
     let textDisplayHeight: CGFloat = 20
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
@@ -33,6 +34,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
 //    Sets the background to blue and calls the startGame() function.
     override func didMove(to view: SKView) {
         self.backgroundColor = .blue
+        self.constants.actualWidth = view.frame.width
         startGame()
     }
     
@@ -78,8 +80,9 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
 //    Creates a ball and adds it to the balls array (look at the Ball class for more details).
     fileprivate func createABall(_ view: SKView, _ i: Int) {
-        let ball = Ball(view, i)
-        ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*20, y: 40)
+        let ball = Ball(view, i, constants)
+        
+        ball.position = CGPoint(x: view.frame.midX+CGFloat(i)*constants.ballXGap, y: constants.ballY)
         
         self.balls.append(ball)
         addChild(ball)
@@ -99,9 +102,9 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
 //    Creates the paddle (look at the Paddle class for more details).
     func createPaddle() {
         guard let view = self.view else { return }
-        let size = CGSize(width: 100, height: 5)
-        let paddle = Paddle(size: size)
-        paddle.position = CGPoint(x: view.frame.midX, y: size.height)
+        
+        let paddle = Paddle(size: constants.paddleSize)
+        paddle.position = CGPoint(x: view.frame.midX, y: constants.paddleSize.height)
         
         self.paddle = paddle
         addChild(paddle)
@@ -141,16 +144,14 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         guard let view = self.view else { return }
         bricks = [Brick]()
         
-        let brickWidth: CGFloat = 40
-        let brickHeight: CGFloat = 20
-        let brickSize = CGSize(width: brickWidth, height: brickHeight)
+        let brickSize = CGSize(width: constants.brickWidth, height: constants.brickHeight)
 //        Makes sure that there are enough bricks to fit on the screen.
-        let numBricks: Int = Int(view.frame.size.width/brickWidth)
+        let numBricks: Int = Int(view.frame.size.width/constants.brickWidth)
 //        Creates the bricks in rows.
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
                 let brick = Brick(size: brickSize)
-                brick.position = CGPoint(x: view.frame.minX+brickWidth/2+(brickWidth*CGFloat(brickX)), y: (view.frame.maxY-brickHeight-textDisplayHeight)-(CGFloat(brickY)*brickHeight))
+                brick.position = CGPoint(x: view.frame.minX+constants.brickWidth/2+(constants.brickWidth*CGFloat(brickX)), y: (view.frame.maxY-constants.brickHeight-textDisplayHeight)-(CGFloat(brickY)*constants.brickHeight))
                 
                 addChild(brick)
                 bricks.append(brick)
@@ -294,7 +295,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
 //    Ends the game and resets the lives player's.
     func endGame(text: String) {
         guard let view = self.view else { return }
-
+        
         self.scene?.removeAllChildren()
         let gameOverLabel = SKLabelNode(text: text)
         gameOverLabel.fontSize = 20

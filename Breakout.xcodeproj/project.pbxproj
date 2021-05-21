@@ -15,6 +15,7 @@
 		B641C0F7264448B0001CEC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F6264448B0001CEC2E /* Assets.xcassets */; };
 		B641C0FA264448B0001CEC2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B641C0F8264448B0001CEC2E /* LaunchScreen.storyboard */; };
 		B641C105264448B1001CEC2E /* BreakoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641C104264448B1001CEC2E /* BreakoutTests.swift */; };
+		B643F4B62658295300B3568D /* BreakoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B643F4B52658295300B3568D /* BreakoutConstants.swift */; };
 		B6C161A52655F21800C40E01 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C161A42655F21800C40E01 /* Ball.swift */; };
 		B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31017264DA66F00C3AEEA /* VectorMath.swift */; };
 		B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */; };
@@ -46,6 +47,7 @@
 		B641C100264448B1001CEC2E /* BreakoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreakoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B641C104264448B1001CEC2E /* BreakoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakoutTests.swift; sourceTree = "<group>"; };
 		B641C106264448B1001CEC2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B643F4B52658295300B3568D /* BreakoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakoutConstants.swift; sourceTree = "<group>"; };
 		B6C161A42655F21800C40E01 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		B6D31017264DA66F00C3AEEA /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		B6D31019264DA76C00C3AEEA /* SolidRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidRectangle.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				B6F0E0DD2652E721003DA239 /* Brick.swift */,
 				B6F0E0DF2652E969003DA239 /* Paddle.swift */,
 				B6C161A42655F21800C40E01 /* Ball.swift */,
+				B643F4B52658295300B3568D /* BreakoutConstants.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				B6D3101A264DA76C00C3AEEA /* SolidRectangle.swift in Sources */,
 				B6F0E0E02652E969003DA239 /* Paddle.swift in Sources */,
 				B6DEB74D264DAA3F005BFA11 /* Barrier.swift in Sources */,
+				B643F4B62658295300B3568D /* BreakoutConstants.swift in Sources */,
 				B641C0EE264448AE001CEC2E /* AppDelegate.swift in Sources */,
 				B60018662645815E0084BA36 /* BreakoutScene.swift in Sources */,
 				B6D31018264DA66F00C3AEEA /* VectorMath.swift in Sources */,
