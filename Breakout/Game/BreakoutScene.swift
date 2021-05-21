@@ -27,7 +27,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
     
 //    Creates properties for important constants.
     let constants = BreakoutConstants()
-    let textDisplayHeight: CGFloat = 20
+    //let textDisplayHeight: CGFloat = 20
     let gravityVector = CGVector(dx: 0, dy: 0)
     let gameGroup: UInt32 = 1
     
@@ -152,7 +152,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         for brickY in 0..<4 {
             for brickX in 0..<numBricks {
                 let brick = Brick(size: brickSize)
-                brick.position = CGPoint(x: view.frame.minX+constants.brickWidth/2+(constants.brickWidth*CGFloat(brickX)), y: (view.frame.maxY-constants.brickHeight-textDisplayHeight)-(CGFloat(brickY)*constants.brickHeight))
+                brick.position = CGPoint(x: view.frame.minX+constants.brickWidth/2+(constants.brickWidth*CGFloat(brickX)), y: (view.frame.maxY-constants.brickHeight-constants.textDisplayHeight)-(CGFloat(brickY)*constants.brickHeight))
                 
                 addChild(brick)
                 bricks.append(brick)
@@ -166,10 +166,10 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         
         score = 0
         let scoreLabel = SKLabelNode(text: "Score: \(score)")
-        scoreLabel.fontSize = 20
+        scoreLabel.fontSize = constants.labelSize
         scoreLabel.fontColor = .white
         scoreLabel.fontName = "Courier"
-        scoreLabel.position = CGPoint(x: view.frame.maxX-70, y: view.frame.maxY-textDisplayHeight)
+        scoreLabel.position = CGPoint(x: view.frame.maxX-constants.labelPosition, y: view.frame.maxY-constants.textDisplayHeight)
         
         self.scoreLabel = scoreLabel
         addChild(scoreLabel)
@@ -180,10 +180,10 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         guard let view = self.view else { return }
         
         let livesLabel = SKLabelNode(text: "Lives: \(numLives)")
-        livesLabel.fontSize = 20
+        livesLabel.fontSize = constants.labelSize
         livesLabel.fontColor = .white
         livesLabel.fontName = "Courier"
-        livesLabel.position = CGPoint(x: 70, y: view.frame.maxY-textDisplayHeight)
+        livesLabel.position = CGPoint(x: constants.labelPosition, y: view.frame.maxY-constants.textDisplayHeight)
         
         self.livesLabel = livesLabel
         addChild(livesLabel)

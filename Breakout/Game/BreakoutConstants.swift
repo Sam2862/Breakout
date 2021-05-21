@@ -33,8 +33,17 @@ class BreakoutConstants {
     var brickHeight: CGFloat {
         return designRatio*20
     }
-    
     var ballRadius: CGFloat {
         return designRatio*10
     }
+    var labelSize: CGFloat {
+        return designRatio*20
+    }
+    var labelPosition: CGFloat {
+        return (designRatio*70)
+    }
+    var textDisplayHeight: CGFloat {
+        return (designRatio*20)+safeAreaInsets.top
+    }
+    
 }
