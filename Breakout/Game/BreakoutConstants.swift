@@ -54,6 +54,8 @@ class BreakoutConstants {
     var ballVelocityY2: CGFloat {
         return designRatio*90
     }
-    
+    var paddleSpeed: CGFloat {
+        return designRatio*4
+    }
     
 }

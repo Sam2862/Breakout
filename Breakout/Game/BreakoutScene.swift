@@ -53,7 +53,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         gameOverLabel = nil
     }
     
-//    Sets the direction of the paddle, as well as the speed.
+    /// Sets the direction of the paddle, as well as the speed.
     override func update(_ currentTime: TimeInterval) {
         guard let paddle = self.paddle else { return }
         guard let view = self.view else { return }
@@ -63,17 +63,17 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
             break
         case .left:
             if paddle.position.x > paddle.width/2 {
-                paddle.position = CGPoint(x: paddle.position.x-4, y: paddle.position.y)
+                paddle.position = CGPoint(x: paddle.position.x-constants.paddleSpeed, y: paddle.position.y)
             }
             
         case .right:
             if paddle.position.x < view.frame.maxX-paddle.width/2 {
-                paddle.position = CGPoint(x: paddle.position.x+4, y: paddle.position.y)
+                paddle.position = CGPoint(x: paddle.position.x+constants.paddleSpeed, y: paddle.position.y)
             }
         }
     }
     
-//    Creates the rules for gravity and contact physics.
+    /// Creates the rules for gravity and contact physics.
     func createPhysics() {
         self.physicsWorld.gravity = gravityVector
         self.physicsWorld.contactDelegate = self
