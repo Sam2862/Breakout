@@ -299,7 +299,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
         
         self.scene?.removeAllChildren()
         let gameOverLabel = SKLabelNode(text: text)
-        gameOverLabel.fontSize = 20
+        gameOverLabel.fontSize = constants.labelSize
         gameOverLabel.fontColor = .white
         gameOverLabel.fontName = "Courier"
         gameOverLabel.position = CGPoint(x: view.frame.size.width / 2, y: view.frame.size.height / 2)
