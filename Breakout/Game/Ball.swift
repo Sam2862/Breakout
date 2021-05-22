@@ -4,18 +4,18 @@
 //
 //  Created by ITPathways on 5/19/21.
 //
-//Imports the necessary functions.
+// Imports the necessary functions.
 import Foundation
 import SpriteKit
 import GameplayKit
 
-//Creates a class for the ball.
+// Creates a class for the ball.
 class Ball: SKShapeNode {
-//    Creates a variable for the ball.
+    // Creates variables for the ball and for the constants.
     let constants: BreakoutConstants
     var ball: SKShapeNode?
     let gameGroup: UInt32 = 1
-//    Sets the size, color, and physics properties of the ball.
+    // Sets the size, color, and physics properties of the ball.
     init(_ view: SKView, _ i: Int, _ constants: BreakoutConstants) {
         self.constants = constants
         super.init()
@@ -49,7 +49,7 @@ class Ball: SKShapeNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// Adjusts the angle of the ball if it hits the paddle at a bad angle.
     func adjustAngle() {
         guard let physicsBody = self.physicsBody else { return }
         var angle = VectorMath.degrees(vector: physicsBody.velocity)

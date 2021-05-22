@@ -4,17 +4,21 @@
 //
 //  Created by ITPathways on 5/21/21.
 //
-
+// Imports the necessary functions.
 import Foundation
 import SpriteKit
 
+// Creates a class for the constants.
 class BreakoutConstants {
+    // Creates constants for the width of the screen and the safe area insets.
     let defaultWidth: CGFloat = 320
     var actualWidth: CGFloat = 320
     var safeAreaInsets = UIEdgeInsets.zero
+    // Creates a constant for the ratio of the width of the screen using the width of an iPod screen for reference.
     var designRatio: CGFloat {
         return actualWidth/defaultWidth
     }
+    // Changes the size, position, and speed of different object depends on the size of the screen.
     var ballY: CGFloat {
         return designRatio*40
     }
