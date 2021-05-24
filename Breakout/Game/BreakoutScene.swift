@@ -4,7 +4,6 @@
 //
 //  Created by Samuel K on 5/7/21.
 //
-
 // Imports the necessary modules.
 import Foundation
 import SpriteKit
@@ -225,7 +224,7 @@ class BreakoutScene: SKScene, SKPhysicsContactDelegate {
                     (contact.bodyA == brick.physicsBody && contact.bodyB == ball.physicsBody){
                     brick.removeFromParent()
                     bricks.removeAll{$0 == brick}
-//                    Changes the score.
+                    // Changes the score.
                     score += 10
                     scoreLabel?.text = "Score: \(score)"
                     done = true
