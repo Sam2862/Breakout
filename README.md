@@ -8,6 +8,8 @@ to run my program. You can open my program by clicking on the Breakout.xcodeproj
 you should then be able to run it by going to the game scene and clicking the play 
 button in the top right. 
 
+![Screenshot of Breakout](Images/Breakout-01.png)
+
 ## The Code
 The program itself is run by a series of functions inside different classes.
 These functions are all called by one main function called startGame().
