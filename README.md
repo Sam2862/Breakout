@@ -47,7 +47,7 @@ of each constant depending on the size of the device the
 game is being run on. It uses the width of an iPod touch
 as a reference.
 
-##The Game
+## The Game
 
 
 
