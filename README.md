@@ -50,6 +50,14 @@ game is being run on. It uses the width of an iPod touch
 as a reference.
 
 ## The Game
-
+Running the program allows the user to play a game of breakout.
+The you can move the paddle by clicking and holding down the mouse 
+on the area of the screen you want the paddle to move.
+The goal is to hit all of the bricks, if your can clear the
+screen of every brick, a win screen will appear and you will 
+have the option to play again by clicking anywhere on the screen.
+Your score and lives can be seen at the top of the screen, you
+start with three lives and if you run out, a game over screen
+will appear.
 
 
