@@ -8,8 +8,6 @@ to run my program. You can open my program by clicking on the Breakout.xcodeproj
 you should then be able to run it by going to the game scene and clicking the play 
 button in the top right. 
 
-![Screenshot of Breakout](Images/Breakout-01.png)
-
 ## The Code
 The program itself is run by a series of functions inside different classes.
 These functions are all called by one main function called startGame().
@@ -56,8 +54,31 @@ on the area of the screen you want the paddle to move.
 The goal is to hit all of the bricks, if your can clear the
 screen of every brick, a win screen will appear and you will 
 have the option to play again by clicking anywhere on the screen.
+
+![Screenshot of Breakout](Images/Breakout-01.png)
+
 Your score and lives can be seen at the top of the screen, you
 start with three lives and if you run out, a game over screen
-will appear.
-
+will appear. Your score increases by ten every time you hit
+a brick. You can change how much the score increases, as well
+as how number of lives within the code.
+```swift
+    var numLives = 3
+```
+```swift
+    score += 10
+```
+You can even add more than one ball at a time by changing
+the value of numBalls within the createBalls() function.
+```swift
+    func createBalls() {
+        guard let view = self.view else { return }
+        
+        let numBalls = 1
+        self.balls.removeAll()
+        for i in 0..<numBalls {
+            createABall(view, i)
+        }
+    }
+```
 
